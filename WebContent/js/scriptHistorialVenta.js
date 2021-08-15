@@ -1,0 +1,38 @@
+/**
+ *  Script GameStore Copyright 2021
+ */
+$(document).ready(function (){
+	$('#inlineRadio1').click(function()
+	{
+		$('#divHcliente').removeClass('d-none')
+		$('#divHfecha').addClass('d-none')
+		$('#divHempleado').addClass('d-none')
+		HborrarImputsTables();
+	});
+	$('#inlineRadio2').click(function()
+	{
+		$('#divHcliente').addClass('d-none')
+		$('#divHfecha').removeClass('d-none')
+		$('#divHempleado').addClass('d-none')
+		HborrarImputsTables();
+	});
+	$('#inlineRadio3').click(function()
+	{
+		$('#divHcliente').addClass('d-none')
+		$('#divHfecha').addClass('d-none')
+		$('#divHempleado').removeClass('d-none')
+		HborrarImputsTables();
+	});
+	$('#buttonHCliente').click(function()
+	{
+		SendFormHistorialClient();
+	});
+	$('#buttonHFecha').click(function()
+	{
+		SendFormHistorialFecha();
+	});
+	$('#buttonHEmpleado').click(function()
+	{
+		SendFormHistorialEmple();
+	});
+}); 

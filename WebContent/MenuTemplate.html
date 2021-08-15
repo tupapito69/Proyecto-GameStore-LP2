@@ -1,0 +1,111 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+	<div class="container">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<a class="navbar-brand" href="Home.jsp">
+			<img src="images/Logotipo_Tienda_GameStore.jpg" width="70" height="50">
+		</a>
+		<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+			<a class="navbar-brand" href="Home.jsp">GameStore</a>
+			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+				<li class="nav-item active">
+					<a class="nav-link" href="Ventas.jsp">
+						<i class="bi bi-list-ol"></i>
+						Ventas
+						<span class="sr-only">(Ventas)</span>
+					</a>
+				</li>
+				<% 
+					if(misession.getAttribute("codCargo")!=null){
+						String cargo= (String)misession.getAttribute("codCargo");
+						switch (cargo){
+						case "A01":%>
+							<li class="nav-item active">
+								<a class="nav-link" href="mantenimiento.jsp">
+									<i class="bi bi-gear"></i>
+									Mantenimientos
+									<span class="sr-only">(Mantenimientos)</span>
+								</a>
+							</li><% break; 
+						case "A02":%>
+							<li class="nav-item active">
+							</li><% break;
+						}
+					} else{%>
+						
+					<%}
+				%>
+				<li class="nav-item active">
+					<a class="nav-link" href="consultas.jsp">
+						<i class="bi bi-search"></i> 
+						Consultas
+						<span class="sr-only">(Consultas)</span>
+					</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" onclick="InfoApp();" style="cursor: pointer;">
+						<i class="bi bi-info-circle"></i> 
+						Acerda de
+						<span class="sr-only">(Acerca de)</span>
+					</a>
+				</li>
+				<li class="dropdown">
+					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+						<i class="bi bi-person-circle"></i> <%= misession.getAttribute("NameUser") %>
+					</button>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<!-- <a class="dropdown-item" href="#">
+							<i class="bi bi-person-circle"></i> Mi Perfil
+							<span class="sr-only">(Mi Perfil)</span>
+						</a> -->
+						<a class="dropdown-item" href="#" id="UpdatePassword">
+							<i class="bi bi-key"></i> Cambiar Contraseña
+							<span class="sr-only">(Cambiar Contraseña)</span>
+						</a>
+						<a class="dropdown-item" href="Intranet?option=logout">
+							<i class="bi bi-box-arrow-left"></i> Cerrar Sesión 
+							<span class="sr-only">(Cerrar Sesión)</span>
+						</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<div class="modal" tabindex="-1" id="myModalUpdatePass">
+	<form action="Intranet" autocomplete="off" id="frm-Login" method="post" role="form">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Cambiar Contraseña</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<!-- <div class="col-12">
+							<label>Contraseña Actual</label><br>
+							<input type="password" class="form-control" name="txtPassAntigua" id="PassAntigua" maxlength="55" required="required">
+						</div> -->
+						<div class="col-12">
+							<label>Contraseña Nueva</label><br>
+							<input type="password" class="form-control" name="txtPassNew" id="PassNew" maxlength="55" required="required">
+						</div>
+						<div class="col-12">
+							<label>Confirmar Contraseña</label><br>
+							<input type="password" class="form-control" name="txtPassNewConfirm" id="PassNewConfirm" maxlength="55" required="required">
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+					<button type="submit" class="btn btn-success" name="option" value="cpss">Guardar</button>
+				</div>
+			</div>
+		</div>
+	</form>
+	${msje }
+</div>
