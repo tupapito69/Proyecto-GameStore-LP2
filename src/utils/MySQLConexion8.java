@@ -11,12 +11,12 @@ public class MySQLConexion8 {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			String url = "jdbc:mysql://localhost/gamescenter_bd?useSSL=false&useTimezone=true&serverTimezone=UTC";
 			String usr = "root";
-			String psw = "4843072";
+			String psw = "";
 			con = DriverManager.getConnection(url, usr, psw);
 		} catch (ClassNotFoundException e) {
 			System.out.println("Error >> Driver no Instalado!!" + e.getMessage());
 		} catch (SQLException e) {
-			System.out.println("Error >> de conexión con la BD" + e.getMessage());
+			System.out.println("Error >> de conexiÃ³n con la BD" + e.getMessage());
 		} catch (Exception e) {
 			System.out.println("Error >> general : " + e.getMessage());
 		}
